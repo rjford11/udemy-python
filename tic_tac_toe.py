@@ -6,6 +6,21 @@ playing = True
 print('Welcome to Tic Tac Toe!')
 
 def replay():
+    keep_playing = input('Do you wish to keep playing?')
+    return keep_playing.upper() == 'YES'
+    
+def full_board_check(board):
+    return ' ' in board
+    
+def space_check(board, position):
+  return (board[position] == 'X' or board[position] == 'O')
+
+import random
+def choose_first():
+  random_num = random.randint(1,2)
+  print('Player {} went first.'.format(random_num))
+  
+def replay():
     pass
 
 def win_check(board, marker):
@@ -36,14 +51,11 @@ def check_position(position):
     else:
         return 'fail'
     
-def play_game():
+def player_choice(board):
+    playing = True
     while playing:
         position = int(input("Choose your next position: (1-9"))
-        check = check_position(position)
-        if (check == 'fail'):
-            print("This position has already been used.  Please pick a different position.")
-
-        playing = False
+        playing = space_check(board,position)
         
 def player_input():
     while True:
